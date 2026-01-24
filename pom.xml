@@ -11,6 +11,7 @@
     <groupId>com.iot</groupId>
     <artifactId>tiktok-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>tiktok-service</name>
     <description>tiktok-service</description>
     <url/>
@@ -20,6 +21,15 @@
     <developers>
         <developer/>
     </developers>
+    <modules>
+        <module>common</module>
+        <module>config</module>
+        <module>controller</module>
+        <module>service</module>
+        <module>mapper</module>
+        <module>entity</module>
+        <module>dto</module>
+    </modules>
     <scm>
         <connection/>
         <developerConnection/>
