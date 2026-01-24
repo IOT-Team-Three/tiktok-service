@@ -1,0 +1,57 @@
+# 服务器配置
+spring:
+  application:
+    name: tiktok-service
+
+  profiles:
+    active: dev
+
+  #通用配置
+  # 日期时间格式化配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization:
+      indent-output: false
+      fail-on-empty-beans: false
+  # JPA配置
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+  # 异步任务配置
+  mvc:
+    async:
+      request-timeout: 30000
+  # 任务执行线程池配置
+  task:
+    execution:
+      pool:
+        core-size: 5
+        max-size: 10
+        queue-capacity: 100
+  # 缓存配置
+  cache:
+    type: redis
+    redis:
+      time-to-live: 3600000
+      cache-null-values: false
+
+# 服务器配置
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+  tomcat:
+    connection-timeout: 30000
+    max-connections: 500
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain,text/css,text/javascript,application/javascript
+    min-response-size: 2048
+  ssl:
+    enabled: false
+  forward-headers-strategy: framework

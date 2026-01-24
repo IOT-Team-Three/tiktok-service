@@ -1,0 +1,69 @@
+#开发环境
+
+spring:
+
+  #数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:
+    username:
+    password:
+    hikari:
+      auto-commit: false
+      connection-test-query: SELECT 1
+      leak-detection-threshold: 60000
+      connection-timeout: 20000
+      maximum-pool-size: 5
+      minimum-idle: 2
+      idle-timeout: 300000
+      max-lifetime: 900000
+      pool-name: SmartJobHikariPool
+  # redis配置
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      username: default
+      password: 123456
+      database: 0
+      connect-timeout: 20000
+      timeout: 5000
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: 2000
+
+# MyBatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.sicau.pojo
+
+# 日志配置
+logging:
+  level:
+    com.sicau: DEBUG
+    org.springframework.jdbc: DEBUG
+
+# 应用配置
+app:
+  base-url: "http://localhost:${server.port}${server.servlet.context-path}"
+  home-url: "${app.base-url}/home"
+
+# cas服务器配置
+cas:
+  server-url: https://auth.sicau.cn/sso/
+  callback-url: "${app.base-url}/login/callback"
+  client-name: casClient
+  app-id: xxgcxy_jytj
+
+# 安全配置
+security:
+  open-url: /api/v1/**
+
+jwt:
+  secret: "12345678901234567890123456789012"
+  expiration: 3600000
+  token-header: "Authorization"
+  token-prefix: "Bearer "
