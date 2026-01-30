@@ -63,3 +63,26 @@ create table user.stat
         foreign key (video_id) references user.video (video_id)
 );
 
+//评论
+create table user.comment
+(
+    id            bigint    not null comment '评论id'
+        primary key,
+    user_id       bigint    not null comment 'ping',
+    video_id      bigint    not null,
+    content       text      not null comment '评论内容',
+    conmment_time timestamp not null comment '评论时间',
+    reply_id      bigint    not null comment '评论回复的id',
+    constraint comment_comment_id_fk
+        foreign key (reply_id) references user.comment (id),
+    constraint comment_user_userid_fk
+        foreign key (user_id) references user.user (userid),
+    constraint comment_video_video_id_fk
+        foreign key (video_id) references user.video (video_id)
+);
+
+create index comment_conmment_time_index
+    on user.comment (conmment_time);
+
+
+

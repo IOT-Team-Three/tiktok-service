@@ -38,6 +38,8 @@
     </scm>
     <properties>
         <java.version>25</java.version>
+        <!-- ⭐ 添加MyBatis Plus版本 -->
+        <mybatis-plus.version>3.5.5</mybatis-plus.version>
     </properties>
     <dependencies>
         <!-- Redis数据存储依赖 - 提供Redis缓存和会话存储功能 -->
@@ -70,11 +72,20 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- MyBatis ORM框架依赖 - 提供数据库对象关系映射功能 -->
+        <!-- ⭐ 移除旧的MyBatis，改用MyBatis Plus -->
+        <!--
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>3.0.5</version>
+        </dependency>
+        -->
+
+        <!-- ⭐ 添加MyBatis Plus依赖 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus.version}</version>
         </dependency>
 
         <!-- MySQL数据库驱动依赖 - 连接MySQL数据库 -->
@@ -125,11 +136,21 @@
 
         <!-- 以下是测试相关的依赖 -->
 
-        <!-- MyBatis测试依赖 - 用于数据库映射相关的测试 -->
+        <!-- ⭐ 移除旧的MyBatis测试依赖 -->
+        <!--
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter-test</artifactId>
             <version>3.0.5</version>
+            <scope>test</scope>
+        </dependency>
+        -->
+
+        <!-- ⭐ 添加MyBatis Plus测试依赖 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter-test</artifactId>
+            <version>${mybatis-plus.version}</version>
             <scope>test</scope>
         </dependency>
 
