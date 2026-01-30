@@ -5,19 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.iot</groupId>
-        <artifactId>tiktok-service</artifactId>
+        <artifactId>service</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>dto</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.iot</groupId>
-            <artifactId>entity</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
+    <artifactId>Service-Filter</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>25</maven.compiler.source>

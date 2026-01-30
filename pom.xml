@@ -29,6 +29,8 @@
         <module>mapper</module>
         <module>entity</module>
         <module>dto</module>
+        <module>service/Service-AI</module>
+        <module>service/Service-Controller</module>
     </modules>
     <scm>
         <connection/>
@@ -44,6 +46,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!-- spring mvc 依赖 - 提供MVC框架和控制器功能 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <!-- Groovy模板引擎依赖 - 用于视图渲染和模板处理 -->
@@ -122,6 +130,8 @@
             <artifactId>hutool-all</artifactId>
             <version>5.8.40</version>
         </dependency>
+
+
 
         <!-- 以下是测试相关的依赖 -->
 
