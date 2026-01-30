@@ -10,25 +10,6 @@
     </parent>
 
     <artifactId>service</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>Service-Filter</module>
-        <module>Service-Controller</module>
-        <module>Service-AI</module>
-    </modules>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.iot</groupId>
-            <artifactId>config</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.iot</groupId>
-            <artifactId>dto</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
 
     <properties>
         <maven.compiler.source>25</maven.compiler.source>

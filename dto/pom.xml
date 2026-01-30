@@ -11,14 +11,6 @@
 
     <artifactId>dto</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.iot</groupId>
-            <artifactId>entity</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
-
     <properties>
         <maven.compiler.source>25</maven.compiler.source>
         <maven.compiler.target>25</maven.compiler.target>
