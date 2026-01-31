@@ -1,4 +1,4 @@
-package com.iot;
+package iot;
 import lombok.Data;
 
 @Data
