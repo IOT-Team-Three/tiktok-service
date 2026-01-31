@@ -1,7 +1,7 @@
 package com.iot.Impl;
 
 import com.iot.CommonAuthenticationService;
-import com.iot.Result;
+import com.iot.dto.Result;
 import com.iot.dto.LoginRequest;
 import com.iot.dto.LoginResponse;
 import com.iot.dto.RegisterRequest;

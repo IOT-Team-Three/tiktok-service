@@ -1,5 +1,6 @@
 package com.iot;
 
+import com.iot.dto.Result;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;

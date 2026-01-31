@@ -13,23 +13,23 @@ create table user.user
 //关注
 create table user.follow
 (
-    follwer_id bigint    not null comment '关注者',
-    follwed_id bigint    not null comment '被关注者id',
+    follower_id bigint    not null comment '关注者',
+    followed_id bigint    not null comment '被关注者id',
     time       timestamp not null comment '关注时间',
     id         bigint    not null
         primary key,
     constraint follow_user_userid_fk
-        foreign key (follwer_id) references user.user (userid),
+        foreign key (follower_id) references user.user (userid),
     constraint follow_user_userid_fk_2
-        foreign key (follwed_id) references user.user (userid)
+        foreign key (followed_id) references user.user (userid)
 )
     comment '关注表';
 
-create index follow_follwed_id_index
-    on user.follow (follwed_id);
+create index follow_followed_id_index
+    on user.follow (followed_id);
 
-create index follow_follwer_id_index
-    on user.follow (follwer_id);
+create index follow_follower_id_index
+    on user.follow (follower_id);
 
 
 //视频
@@ -71,7 +71,7 @@ create table user.comment
     user_id       bigint    not null comment 'ping',
     video_id      bigint    not null,
     content       text      not null comment '评论内容',
-    conmment_time timestamp not null comment '评论时间',
+    comment_time timestamp not null comment '评论时间',
     reply_id      bigint    not null comment '评论回复的id',
     constraint comment_comment_id_fk
         foreign key (reply_id) references user.comment (id),
@@ -81,8 +81,8 @@ create table user.comment
         foreign key (video_id) references user.video (video_id)
 );
 
-create index comment_conmment_time_index
-    on user.comment (conmment_time);
+create index comment_comment_time_index
+    on user.comment (comment_time);
 
 
 

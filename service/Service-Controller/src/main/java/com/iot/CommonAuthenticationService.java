@@ -3,6 +3,7 @@ package com.iot;
 import com.iot.dto.LoginRequest;
 import com.iot.dto.LoginResponse;
 import com.iot.dto.RegisterRequest;
+import com.iot.dto.Result;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 public interface CommonAuthenticationService {
