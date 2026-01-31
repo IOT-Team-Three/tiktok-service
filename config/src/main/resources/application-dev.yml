@@ -38,7 +38,7 @@ spring:
 # MyBatis配置
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.sicau.pojo
+  type-aliases-package: com.iot
 
 # 日志配置
 logging:

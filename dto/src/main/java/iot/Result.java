@@ -1,4 +1,4 @@
-package com.iot;
+package iot;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
