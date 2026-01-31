@@ -1,5 +1,6 @@
-//用户表
-create table user.user
+create database if not exists tiktok;
+#用户表
+create table tiktok.user
 (
     username varchar(50)  not null comment '账号',
     userid   bigint       not null comment 'id'
@@ -10,8 +11,8 @@ create table user.user
         unique (password)
 );
 
-//关注
-create table user.follow
+#关注
+create table tiktok.follow
 (
     follower_id bigint    not null comment '关注者',
     followed_id bigint    not null comment '被关注者id',
@@ -19,21 +20,21 @@ create table user.follow
     id         bigint    not null
         primary key,
     constraint follow_user_userid_fk
-        foreign key (follower_id) references user.user (userid),
+        foreign key (follower_id) references tiktok.user (userid),
     constraint follow_user_userid_fk_2
-        foreign key (followed_id) references user.user (userid)
+        foreign key (followed_id) references tiktok.user (userid)
 )
     comment '关注表';
 
 create index follow_followed_id_index
-    on user.follow (followed_id);
+    on tiktok.follow (followed_id);
 
 create index follow_follower_id_index
-    on user.follow (follower_id);
+    on tiktok.follow (follower_id);
 
 
-//视频
-create table user.video
+#视频
+create table tiktok.video
 (
     user_id   bigint       not null comment '作者id',
     title     varchar(200) not null comment '视频标题',
@@ -47,11 +48,11 @@ create table user.video
     updated   timestamp    not null comment '更新时间',
     text      varchar(500) null comment '视频文案',
     constraint video_user_userid_fk
-        foreign key (user_id) references user.user (userid)
+        foreign key (user_id) references tiktok.user (userid)
 );
 
-//视频互动
-create table user.stat
+#视频互动
+create table tiktok.stat
 (
     `like`   int       null comment '点赞',
     view     int       null comment '播放量',
@@ -60,29 +61,29 @@ create table user.stat
     share    int       null comment '分享数',
     updated  timestamp null comment '更新时间',
     constraint stat_video_video_id_fk
-        foreign key (video_id) references user.video (video_id)
+        foreign key (video_id) references tiktok.video (video_id)
 );
 
-//评论
-create table user.comment
+#评论
+create table tiktok.comment
 (
     id            bigint    not null comment '评论id'
         primary key,
-    user_id       bigint    not null comment 'ping',
+    user_id       bigint    not null comment '评论者id',
     video_id      bigint    not null,
     content       text      not null comment '评论内容',
     comment_time timestamp not null comment '评论时间',
     reply_id      bigint    not null comment '评论回复的id',
     constraint comment_comment_id_fk
-        foreign key (reply_id) references user.comment (id),
+        foreign key (reply_id) references tiktok.comment (id),
     constraint comment_user_userid_fk
-        foreign key (user_id) references user.user (userid),
+        foreign key (user_id) references tiktok.user (userid),
     constraint comment_video_video_id_fk
-        foreign key (video_id) references user.video (video_id)
+        foreign key (video_id) references tiktok.video (video_id)
 );
 
 create index comment_comment_time_index
-    on user.comment (comment_time);
+    on tiktok.comment (comment_time);
 
 
 
