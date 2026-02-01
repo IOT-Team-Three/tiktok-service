@@ -1,14 +1,14 @@
-package com.iot.entity;
+package com.iot.model;
 
 import lombok.Getter;
 
 @Getter
-public enum Model {
+public enum AIModel {
     Deepseek("deepseek"),
     Doubao("doubao");
 
     private final String model;
-    Model(String model) {
+    AIModel(String model) {
         this.model = model;
     }
 }

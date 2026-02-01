@@ -1,4 +1,4 @@
-package com.tiktok.entity;
+package com.iot.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @TableName("user")
-public class user {
+public class User {
     //id
     @TableId(type = IdType.ASSIGN_ID)
     private Long userid;

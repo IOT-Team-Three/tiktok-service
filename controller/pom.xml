@@ -29,7 +29,7 @@
         </dependency>
         <dependency>
             <groupId>com.iot</groupId>
-            <artifactId>Service-Controller</artifactId>
+            <artifactId>Service-Authentication</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

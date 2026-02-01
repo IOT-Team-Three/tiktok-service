@@ -1,4 +1,4 @@
-package com.tiktok.entity;
+package com.iot.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Data
 @TableName("video")
-public class video {
+public class Video {
     //视频号
     private Long video_id;
 
