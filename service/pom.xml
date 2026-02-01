@@ -11,11 +11,6 @@
 
     <artifactId>service</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>Service-Filter</module>
-        <module>Service-Authentication</module>
-        <module>Service-AI</module>
-    </modules>
 
     <dependencies>
         <dependency>
@@ -32,6 +27,12 @@
             <groupId>com.iot</groupId>
             <artifactId>mapper</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.iot</groupId>
+            <artifactId>mapper</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

@@ -31,7 +31,7 @@ public class CommonAuthenticationServiceImpl implements CommonAuthenticationServ
     public Result<LoginResponse> login(LoginRequest loginRequest) {
         try {
             // 验证用户密码
-            User user = userMapper.selectOne(new LambdaQueryWrapper<User>()
+            User user = (User) userMapper.selectOne(new LambdaQueryWrapper<User>()
                     .eq(User::getUsername, loginRequest.getUsername())
                     .eq(User::getPassword, fastMethodConfig.md5(loginRequest.getPassword())));
             if (user == null) {
