@@ -17,7 +17,7 @@ spring:
       minimum-idle: 2
       idle-timeout: 300000
       max-lifetime: 900000
-      pool-name: SmartJobHikariPool
+      pool-name: TikTokHikariPool
   # redis配置
   data:
     redis:
@@ -35,10 +35,12 @@ spring:
           min-idle: 0
           max-wait: 2000
 
-# MyBatis配置
-mybatis:
+# MyBatis-plus配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.iot
+  type-aliases-package: com.iot.entity
 
 # 日志配置
 logging:

@@ -1,4 +1,4 @@
-package com.tiktok.entity;
+package com.iot.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.util.Date;
 @Data
 @TableName("comment")
 
-public class comment {
+public class Comment {
 
     //评论id
     @TableId(type = IdType.ASSIGN_ID)

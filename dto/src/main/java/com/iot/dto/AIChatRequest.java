@@ -1,10 +1,10 @@
 package com.iot.dto;
 
-import com.iot.entity.Model;
+import com.iot.model.AIModel;
 import lombok.Data;
 
 @Data
 public class AIChatRequest {
     private String prompt;
-    private Model model;
+    private AIModel AIModel;
 }

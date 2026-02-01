@@ -1,4 +1,4 @@
-package com.tiktok.entity;
+package com.iot.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -9,10 +9,10 @@ import java.util.Date;
 
 @Data
 @TableName("stat")
-public class stat {
+public class Stat {
 
     //视频id
-    @TableId
+    @TableId(type = IdType.ASSIGN_ID)
     private Long video_id;
 
     //点赞

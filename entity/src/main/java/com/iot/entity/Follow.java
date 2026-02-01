@@ -1,4 +1,4 @@
-package com.tiktok.entity;
+package com.iot.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 @TableName("follow")
-public class follow {
+public class Follow {
 
     private Long follwed_id;
     private Long follower_id;
