@@ -5,17 +5,33 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.iot</groupId>
-        <artifactId>tiktok-service</artifactId>
+        <artifactId>service</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>mapper</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>Service-AI</artifactId>
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-bom</artifactId>
+            <version>1.1.2</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-ollama</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <dependency>
             <groupId>com.iot</groupId>
-            <artifactId>entity</artifactId>
+            <artifactId>config</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.iot</groupId>
+            <artifactId>dto</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
@@ -27,4 +43,3 @@
     </properties>
 
 </project>
-
