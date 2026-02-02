@@ -1,6 +1,8 @@
 #开发环境
-
 spring:
+  ai:
+    ollama:
+      pull-model-strategy: always
 
   #数据库配置
   datasource:
@@ -26,14 +28,14 @@ spring:
       username: default
       password: 123456
       database: 0
-      connect-timeout: 20000
-      timeout: 5000
+      connect-timeout: PT20S
+      timeout: PT5S
       lettuce:
         pool:
           max-active: 8
           max-idle: 8
           min-idle: 0
-          max-wait: 2000
+          max-wait: PT20S
 
 # MyBatis-plus配置
 mybatis-plus:
@@ -62,7 +64,7 @@ cas:
 
 # 安全配置
 security:
-  open-url: /api/v1/**
+  open-url: /api/v1/auth/login,/api/v1/auth/register
 
 jwt:
   secret: "12345678901234567890123456789012"

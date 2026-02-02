@@ -9,13 +9,13 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <modules>
+        <module>Service-AI</module>
+        <module>Service-Authentication</module>
+    </modules>
+
     <artifactId>service</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>Service-Filter</module>
-        <module>Service-Authentication</module>
-        <module>Service-AI</module>
-    </modules>
 
     <dependencies>
         <dependency>
@@ -26,6 +26,12 @@
         <dependency>
             <groupId>com.iot</groupId>
             <artifactId>dto</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.iot</groupId>
+            <artifactId>entity</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
