@@ -5,7 +5,6 @@ spring:
 
   profiles:
     active: dev
-
   #通用配置
   # 日期时间格式化配置
   jackson:
@@ -25,7 +24,7 @@ spring:
   # 异步任务配置
   mvc:
     async:
-      request-timeout: 30000
+      request-timeout: PT30S
   # 任务执行线程池配置
   task:
     execution:
@@ -37,16 +36,14 @@ spring:
   cache:
     type: redis
     redis:
-      time-to-live: 3600000
+      time-to-live: PT3600s
       cache-null-values: false
 
 # 服务器配置
 server:
   port: 8080
-  servlet:
-    context-path: /api
   tomcat:
-    connection-timeout: 30000
+    connection-timeout: PT30S
     max-connections: 500
   compression:
     enabled: true

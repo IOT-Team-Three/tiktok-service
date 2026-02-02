@@ -2,8 +2,8 @@ package com.iot.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.iot.CommonAuthenticationService;
-import com.iot.FastMethodConfig;
-import com.iot.JwtUtilsConfig;
+import com.iot.config.FastMethodConfig;
+import com.iot.config.JwtUtilsConfig;
 import com.iot.dto.Result;
 import com.iot.dto.LoginRequest;
 import com.iot.dto.LoginResponse;

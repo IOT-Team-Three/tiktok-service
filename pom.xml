@@ -29,8 +29,7 @@
         <module>mapper</module>
         <module>entity</module>
         <module>dto</module>
-        <module>Service-AI</module>               <!-- 原来：service/Service-AI -->
-        <module>Service-Authentication</module>   <!-- 原来：service/Service-Authentication -->
+        <module>filter</module>
     </modules>
     <scm>
         <connection/>
@@ -81,8 +80,8 @@
         <!-- ⭐ 添加MyBatis Plus依赖 -->
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.5.7</version>  <!-- 升级到最新版本 -->
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+            <version>3.5.10</version>
         </dependency>
 
         <!-- MySQL数据库驱动依赖 - 连接MySQL数据库 -->
@@ -131,11 +130,11 @@
             <version>5.8.40</version>
         </dependency>
 
-        <!-- ⭐ 添加MyBatis Plus测试依赖 -->
+        <!-- 添加MyBatis Plus测试依赖 -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter-test</artifactId>
-            <version>3.5.6</version>
+            <version>3.5.10</version>
             <scope>test</scope>
         </dependency>
 
