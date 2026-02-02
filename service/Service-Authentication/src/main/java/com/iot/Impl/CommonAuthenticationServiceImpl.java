@@ -1,9 +1,9 @@
 package com.iot.Impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.iot.CommonAuthenticationService;
-import com.iot.FastMethodConfig;
-import com.iot.JwtUtilsConfig;
+import com.iot.config.FastMethodConfig;
+import com.iot.config.JwtUtilsConfig;
 import com.iot.dto.Result;
 import com.iot.dto.LoginRequest;
 import com.iot.dto.LoginResponse;
@@ -32,14 +32,15 @@ public class CommonAuthenticationServiceImpl implements CommonAuthenticationServ
     public Result<LoginResponse> login(LoginRequest loginRequest) {
         try {
             // 验证用户密码
-            User user = userMapper.selectOne(new LambdaQueryWrapper<User>()
-                    .eq(User::getUsername, loginRequest.getUsername())
-                    .eq(User::getPassword, fastMethodConfig.md5(loginRequest.getPassword())));
+            QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("username", loginRequest.username);
+            queryWrapper.eq("password", fastMethodConfig.md5(loginRequest.password));
+            User user = userMapper.selectOne(queryWrapper);
             if (user == null) {
                 return Result.error(HttpServletResponse.SC_OK,"用户名或密码错误");
             }
             // 登录成功，返回登录成功信息
-            return Result.success(new LoginResponse(true, jwtUtilsConfig.generateToken(user.getUserid().intValue(), user.getUsername(), user.getPassword()), "登录成功", user.getUsername()));
+            return Result.success(new LoginResponse(true, jwtUtilsConfig.generateToken(user.userid.intValue(), user.username, user.password), "登录成功", user.username));
         } catch (Exception e) {
             return Result.error(HttpServletResponse.SC_OK,"登录失败");
         }
@@ -49,16 +50,18 @@ public class CommonAuthenticationServiceImpl implements CommonAuthenticationServ
     public Result<String> register(RegisterRequest registerRequest) {
         try {
             // 验证用户名是否已存在
-            if (userMapper.selectOne(new LambdaQueryWrapper<User>().eq(User::getUsername, registerRequest.getUsername())) != null) {
+            QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("username", registerRequest.username);
+            if (userMapper.selectOne(queryWrapper) != null) {
                 return Result.error(HttpServletResponse.SC_OK,"用户名已存在");
             }
             // 注册用户
             User user = new User();
-            user.setUsername(registerRequest.getUsername());
-            user.setPassword(fastMethodConfig.md5(registerRequest.getPassword()));
+            user.username = registerRequest.username;
+            user.password = fastMethodConfig.md5(registerRequest.password);
             userMapper.insert(user);
             // 注册成功，返回注册成功信息
-            return Result.success(jwtUtilsConfig.generateToken(user.getUserid().intValue(), user.getUsername(), user.getPassword()), "注册成功");
+            return Result.success(jwtUtilsConfig.generateToken(user.userid.intValue(), user.username, user.password), "注册成功");
         } catch (Exception e) {
             return Result.error(HttpServletResponse.SC_OK,"注册失败");
         }
