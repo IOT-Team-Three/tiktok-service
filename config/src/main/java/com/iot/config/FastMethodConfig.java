@@ -1,4 +1,4 @@
-package com.iot;
+package com.iot.config;
 
 import com.iot.entity.User;
 import lombok.Getter;
@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.DigestUtils;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Objects;
@@ -22,13 +21,16 @@ public class FastMethodConfig {
      * @param password
      * @return
      */
-    @Bean
     public String md5(String password) {
         return DigestUtils.md5DigestAsHex(password.getBytes());
     }
 
     @Getter
     private static final int statusSafeCode = new Random().nextInt(Integer.MAX_VALUE);
+    
+    public static int getStatusSafeCode() {
+        return statusSafeCode;
+    }
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
@@ -37,7 +39,6 @@ public class FastMethodConfig {
      * 生成唯一标识
      * @return
      */
-    @Bean
     public String getUnique() {
         Random rand = new Random();
         int randomNum = rand.nextInt(Integer.MAX_VALUE);
@@ -69,7 +70,6 @@ public class FastMethodConfig {
      * @param token
      * @return
      */
-     @Bean
     public User getUserFromToken(String token) {
         return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }

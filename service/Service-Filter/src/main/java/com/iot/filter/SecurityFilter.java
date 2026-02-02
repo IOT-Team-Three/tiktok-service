@@ -24,9 +24,10 @@ public class SecurityFilter extends AbstractHttpConfigurer<SecurityFilter, HttpS
 
     @Bean
     public DefaultSecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authorize -> authorize
-                .requestMatchers(openUrls).permitAll()
-                .anyRequest().authenticated()
+        http
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(openUrls).permitAll()
+                        .anyRequest().authenticated()
         )
                 .csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
@@ -38,7 +39,7 @@ public class SecurityFilter extends AbstractHttpConfigurer<SecurityFilter, HttpS
     }
 
     public AuthenticationEntryPoint authenticationEntryPoint() {
-        return (_, _, _) -> {
+        return (request, response, authException) -> {
         };
     }
 }
