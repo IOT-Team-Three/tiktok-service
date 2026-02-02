@@ -1,7 +1,4 @@
 #开发环境
-server:
-  port: 8081
-
 spring:
   ai:
     ollama:
@@ -11,8 +8,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/tiktok?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: root
-    password: 123456
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     hikari:
       auto-commit: false
       connection-test-query: SELECT 1
@@ -50,7 +47,7 @@ mybatis-plus:
 # 日志配置
 logging:
   level:
-    com.iot: DEBUG
+    com.sicau: DEBUG
     org.springframework.jdbc: DEBUG
 
 # 应用配置
