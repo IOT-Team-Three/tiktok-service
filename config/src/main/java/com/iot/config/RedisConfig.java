@@ -1,4 +1,4 @@
-package com.sicau.take_out.config;
+package com.iot.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

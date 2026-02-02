@@ -9,13 +9,14 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <modules>
+        <module>Service-AI</module>
+        <!-- <module>Service-Authentication</module> -->
+        <module>Service-Filter</module>
+    </modules>
+
     <artifactId>service</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>Service-Filter</module>
-        <module>Service-Authentication</module>
-        <module>Service-AI</module>
-    </modules>
 
     <dependencies>
         <dependency>
@@ -27,6 +28,12 @@
             <groupId>com.iot</groupId>
             <artifactId>dto</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.iot</groupId>
+            <artifactId>entity</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.iot</groupId>
@@ -36,8 +43,8 @@
     </dependencies>
 
     <properties>
-        <maven.compiler.source>25</maven.compiler.source>
-        <maven.compiler.target>25</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 

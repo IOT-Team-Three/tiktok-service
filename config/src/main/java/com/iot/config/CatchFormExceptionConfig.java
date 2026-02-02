@@ -1,4 +1,4 @@
-package com.iot;
+package com.iot.config;
 
 import com.iot.dto.Result;
 import org.springframework.validation.FieldError;
