@@ -1,5 +1,6 @@
 package com.iot;
 
+import com.iot.entity.User;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -61,5 +62,15 @@ public class FastMethodConfig {
      */
     public boolean checkUnique(int userId, String unique) {
         return unique.equals(Objects.requireNonNull(redisTemplate.opsForValue().get("user:" + userId)).toString());
+    }
+
+    /**
+     * 从token中获取用户
+     * @param token
+     * @return
+     */
+     @Bean
+    public User getUserFromToken(String token) {
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 }
