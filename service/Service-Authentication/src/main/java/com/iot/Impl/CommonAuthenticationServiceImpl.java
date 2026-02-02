@@ -10,7 +10,6 @@ import com.iot.dto.LoginResponse;
 import com.iot.dto.RegisterRequest;
 import com.iot.entity.User;
 import com.iot.mapper.UserMapper;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -36,12 +35,12 @@ public class CommonAuthenticationServiceImpl implements CommonAuthenticationServ
                     .eq(User::getUsername, loginRequest.getUsername())
                     .eq(User::getPassword, fastMethodConfig.md5(loginRequest.getPassword())));
             if (user == null) {
-                return Result.error(HttpServletResponse.SC_OK,"用户名或密码错误");
+                return Result.error("用户名或密码错误");
             }
             // 登录成功，返回登录成功信息
             return Result.success(new LoginResponse(true, jwtUtilsConfig.generateToken(user.getUserid().intValue(), user.getUsername(), user.getPassword()), "登录成功", user.getUsername()));
         } catch (Exception e) {
-            return Result.error(HttpServletResponse.SC_OK,"登录失败");
+            return Result.error("登录失败");
         }
     }
 
@@ -50,7 +49,7 @@ public class CommonAuthenticationServiceImpl implements CommonAuthenticationServ
         try {
             // 验证用户名是否已存在
             if (userMapper.selectOne(new LambdaQueryWrapper<User>().eq(User::getUsername, registerRequest.getUsername())) != null) {
-                return Result.error(HttpServletResponse.SC_OK,"用户名已存在");
+                return Result.error("用户名已存在");
             }
             // 注册用户
             User user = new User();
@@ -60,7 +59,7 @@ public class CommonAuthenticationServiceImpl implements CommonAuthenticationServ
             // 注册成功，返回注册成功信息
             return Result.success(jwtUtilsConfig.generateToken(user.getUserid().intValue(), user.getUsername(), user.getPassword()), "注册成功");
         } catch (Exception e) {
-            return Result.error(HttpServletResponse.SC_OK,"注册失败");
+            return Result.error("注册失败");
         }
     }
 }

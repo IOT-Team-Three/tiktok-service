@@ -4,7 +4,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -17,8 +18,9 @@ import java.util.Map;
 @Getter
 @Configuration
 @Component
-@Slf4j
 public class JwtUtilsConfig {
+    
+    private static final Logger log = LoggerFactory.getLogger(JwtUtilsConfig.class);
 
     @Value("${jwt.secret}")
     private String secret;
