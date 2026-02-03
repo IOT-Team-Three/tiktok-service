@@ -1,8 +1,16 @@
+
+
 #开发环境
 spring:
   ai:
     ollama:
-      pull-model-strategy: always
+      chat:
+        options:
+          model: deepseek-r1:8b
+      embedding:
+        enabled: true
+        model: all-minilm
+      base-url: http://localhost:11434
 
   #数据库配置
   datasource:
@@ -60,7 +68,7 @@ cas:
   server-url: https://auth.sicau.cn/sso/
   callback-url: "${app.base-url}/login/callback"
   client-name: casClient
-  app-id: xxgcxy_jytj
+  app-id: ${cas.client-name}
 
 # 安全配置
 security:
@@ -71,3 +79,6 @@ jwt:
   expiration: 3600000
   token-header: "Authorization"
   token-prefix: "Bearer "
+
+default:
+  avatar: https://i0.hdslb.com/bfs/note/4b3f75f2c3e8cd8390b7304b3f9d95702f270baf.png
