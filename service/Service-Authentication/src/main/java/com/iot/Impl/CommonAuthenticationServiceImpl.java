@@ -12,6 +12,7 @@ import com.iot.entity.User;
 import com.iot.mapper.UserMapper;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,9 @@ public class CommonAuthenticationServiceImpl implements CommonAuthenticationServ
 
     @Autowired
     private JwtUtilsConfig jwtUtilsConfig;
+
+    @Value("${default.avatar}")
+    private String defaultAvatar;
 
     @Override
     public Result<LoginResponse> login(LoginRequest loginRequest) {
@@ -56,11 +60,12 @@ public class CommonAuthenticationServiceImpl implements CommonAuthenticationServ
             User user = new User();
             user.setUsername(registerRequest.getUsername());
             user.setPassword(fastMethodConfig.md5(registerRequest.getPassword()));
+            user.setAvatar(defaultAvatar);
             userMapper.insert(user);
             // 注册成功，返回注册成功信息
             return Result.success(jwtUtilsConfig.generateToken(user.getUserid().intValue(), user.getUsername(), user.getPassword()), "注册成功");
         } catch (Exception e) {
-            return Result.error("注册失败");
+                return Result.error(e.getMessage());
         }
     }
 }

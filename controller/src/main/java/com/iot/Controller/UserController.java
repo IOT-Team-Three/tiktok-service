@@ -28,6 +28,7 @@ public class UserController {
      */
     @PostMapping("/login")
     public Result<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
+        // 校验登录请求参数
         return authenticationService.login(loginRequest);
     }
 

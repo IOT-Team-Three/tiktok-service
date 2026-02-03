@@ -46,7 +46,7 @@ public class JwtFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 filterChain.doFilter(request, response);
             } else {
-                sendErrorResponse(response, HttpServletResponse.SC_UNAUTHORIZED, "没有权限");
+                sendErrorResponse(response, HttpServletResponse.SC_UNAUTHORIZED, "未认证");
             }
         } catch (Exception e) {
             // 处理异常，返回内部服务器错误
@@ -75,6 +75,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
     private void sendErrorResponse(HttpServletResponse response, int status, String message) throws IOException {
         if (!response.isCommitted()) {
+            response.setCharacterEncoding("UTF-8");
             response.setStatus(status);
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             String jsonResponse = String.format("{\"error\": \"%d\", \"message\": \"%s\"}",
