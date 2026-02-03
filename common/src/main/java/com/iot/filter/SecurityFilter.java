@@ -39,7 +39,7 @@ public class SecurityFilter extends AbstractHttpConfigurer<SecurityFilter, HttpS
     }
 
     public AuthenticationEntryPoint authenticationEntryPoint() {
-        return (_, _, _) -> {
+        return (request, response, authException) -> {
         };
     }
 }

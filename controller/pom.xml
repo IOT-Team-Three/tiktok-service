@@ -24,11 +24,6 @@
         </dependency>
         <dependency>
             <groupId>com.iot</groupId>
-            <artifactId>service</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.iot</groupId>
             <artifactId>Service-Authentication</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
