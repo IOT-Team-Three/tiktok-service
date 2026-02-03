@@ -2,7 +2,13 @@
 spring:
   ai:
     ollama:
-      pull-model-strategy: always
+      chat:
+        options:
+          model: deepseek-r1:8b
+      embedding:
+        enabled: true
+        model: all-minilm
+      base-url: http://localhost:11434
 
   #数据库配置
   datasource:

@@ -13,9 +13,10 @@ import com.iot.mapper.UserMapper;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 @Data
-@Component
+@Service
 public class CommonAuthenticationServiceImpl implements CommonAuthenticationService {
 
     @Autowired

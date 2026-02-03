@@ -29,7 +29,6 @@
         <module>mapper</module>
         <module>entity</module>
         <module>dto</module>
-        <module>filter</module>
     </modules>
     <scm>
         <connection/>
@@ -38,7 +37,7 @@
         <url/>
     </scm>
     <properties>
-        <java.version>25</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <!-- Redis数据存储依赖 - 提供Redis缓存和会话存储功能 -->
@@ -121,6 +120,21 @@
             <artifactId>jjwt-jackson</artifactId>
             <version>0.11.5</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- 添加Spring AI Bill of Materials依赖 -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-bom</artifactId>
+            <version>1.1.2</version>
+            <type>pom</type>
+        </dependency>
+
+        <!-- 添加Ollama依赖 -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-ollama</artifactId>
+            <version>1.1.2</version>
         </dependency>
 
         <!-- Hutool工具库依赖 - 提供丰富的工具方法 -->
