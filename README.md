@@ -1,5 +1,8 @@
 # tiktok-service
 
+## 特别注意
+- 因为 ollama 下载包过大无法放到 github 上,请自行前往 https://github.com/ollama/ollama/releases/download/v0.15.4/ollama-linux-amd64.tar.zst 下载
+
 ## 项目介绍
 考核项目 仿照抖音 的后端服务，基于Spring Boot框架开发，提供用户管理、视频管理、点赞、评论等核心功能。
 
