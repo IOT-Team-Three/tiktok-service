@@ -1,16 +1,17 @@
 package com.iot.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@Data
+@Data @AllArgsConstructor  @NoArgsConstructor
 @TableName("video")
 public class Video {
     //视频号
+    @TableId(type = IdType.ASSIGN_ID)
     private Long video_id;
 
     //标题

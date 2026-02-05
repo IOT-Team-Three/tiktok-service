@@ -12,6 +12,7 @@
     <modules>
         <module>Service-AI</module>
         <module>Service-Authentication</module>
+        <module>Service-Video</module>
     </modules>
 
     <artifactId>service</artifactId>
