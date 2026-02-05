@@ -7,6 +7,7 @@ import com.iot.dto.Result;
 import com.iot.dto.UploadRequest;
 import com.iot.entity.Video;
 import com.iot.mapper.VideoMapper;
+import jakarta.annotation.PostConstruct;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,7 +26,12 @@ public class VideoResourceServiceImpl implements VideoResourceService {
     @Autowired
     private VideoMapper videoMapper;
 
-    private final String videoPath = resourceConfig.getVIDEO_PATH();
+    private String videoPath;
+
+    @PostConstruct
+    public void init() {
+        videoPath = resourceConfig.getVIDEO_PATH();
+    }
 
     @Override
     public Result<String> uploadVideo(UploadRequest uploadRequest) {
@@ -40,13 +46,13 @@ public class VideoResourceServiceImpl implements VideoResourceService {
 
         // 校验文件是否为空
         if (file.isEmpty()) {
-            return Result.error(HttpStatus.HTTP_BAD_REQUEST,"文件不能为空");
+            return Result.error(HttpStatus.HTTP_BAD_REQUEST, "文件不能为空");
         }
 
         // 校验文件是否为视频文件
         String fileName = file.getOriginalFilename();
         if (fileName != null && !fileName.endsWith(".mp4")) {
-            return Result.error(HttpStatus.HTTP_UNSUPPORTED_TYPE,"文件格式必须为mp4",fileName);
+            return Result.error(HttpStatus.HTTP_UNSUPPORTED_TYPE, "文件格式必须为mp4", fileName);
         }
 
         // 检测文件夹是否存在，不存在则创建
@@ -59,29 +65,30 @@ public class VideoResourceServiceImpl implements VideoResourceService {
             // 保存文件到服务器
             file.transferTo(new File(videoPath + id + "/" + fileName));
         } catch (IOException e) {
-            return Result.error(HttpStatus.HTTP_INTERNAL_ERROR,"上传视频失败",e.getMessage());
+            return Result.error(HttpStatus.HTTP_INTERNAL_ERROR, "上传视频失败", e.getMessage());
         }
 
         // 获取视频时长
-        int duration = 0;
+        int duration;
         try {
-            FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(videoPath + id + "/" + fileName);
-            grabber.start();
-            duration = Math.toIntExact(grabber.getLengthInTime() / 1000); // 转换为秒
-            grabber.stop();
+            try (FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(videoPath + id + "/" + fileName)) {
+                grabber.start();
+                duration = Math.toIntExact(grabber.getLengthInTime() / 1000); // 转换为秒
+                grabber.stop();
+            }
         } catch (Exception e) {
-            return Result.error(HttpStatus.HTTP_INTERNAL_ERROR,"获取视频时长失败",e.getMessage());
+            return Result.error(HttpStatus.HTTP_INTERNAL_ERROR, "获取视频时长失败", e.getMessage());
         }
 
         // 数据库
-        try{
+        try {
             Video video = new Video(null, uploadRequest.getTitle(), uploadRequest.getDescription(), Long.parseLong(id), fileName, null, 1, null, null, duration);
             videoMapper.insert(video);
         } catch (Exception e) {
-            return Result.error(HttpStatus.HTTP_INTERNAL_ERROR,"保存视频信息失败",e.getMessage());
+            return Result.error(HttpStatus.HTTP_INTERNAL_ERROR, "保存视频信息失败", e.getMessage());
         }
 
         // 返回成功
         return Result.success("视频上传成功");
-    };
+    }
 }
