@@ -1,26 +1,26 @@
 package com.iot.Controller;
-
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.iot.entity.Video;
-import com.iot.service.VideoSearch;
+import com.iot.VideoResourceService;
+import com.iot.dto.Result;
+import com.iot.dto.UploadRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+/**
+ * 视频接口
+ */
 @RestController
-@RequestMapping("/video")
+@RequestMapping("/api/v1/video")
+@RequiredArgsConstructor
+@Validated
 public class VideoController {
 
     @Autowired
-    private VideoSearch videoService;
+    private final VideoResourceService videoResourceService;
 
-    @GetMapping("/search")
-    public Page<Video> search(@RequestParam(required = false) String keyword,
-                              @RequestParam(defaultValue = "1") int page,
-                              @RequestParam(defaultValue = "10") int size) {
-        return videoService.searchVideos(keyword, page, size);
+    @PostMapping("/upload/video")
+    public Result<String> uploadVideo(@RequestBody UploadRequest uploadRequest) {
+        return videoResourceService.uploadVideo(uploadRequest);
     }
-
 }

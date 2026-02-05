@@ -26,12 +26,13 @@ public class Result<T> implements Serializable {
     public static <T> Result<T> success() {return success(null);}
 
     public static <T> Result<T> error(int code, String msg) {
-        log.error("{}，详情：{}", code, msg);
+        log.error("{}，{}", code, msg);
         return new Result<>(code, null, msg);
     }
     public static <T> Result<T> error(int code, String msg, T data) {
-        log.error("{}，详情：{},数据：{}", code, msg, data.toString());
-        return new Result<>(code,data,msg);}
+        log.error("{}，{},详情：{}", code, msg, data.toString());
+        return new Result<>(code, null, msg);
+    }
     public static <T> Result<T> error(String msg) {return error(500,msg);}
     public static <T> Result<T> error() {return error(500,"操作失败");}
 }
