@@ -1,4 +1,4 @@
-﻿package com.iot.filter;
+package com.iot.filter;
 
 import cn.hutool.core.text.AntPathMatcher;
 import com.iot.config.FastMethodConfig;

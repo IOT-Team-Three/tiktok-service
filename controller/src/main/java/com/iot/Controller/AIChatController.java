@@ -16,8 +16,8 @@ import java.util.Map;
 /**
  * 智能体控制器
  */
-@RestController
-@RequestMapping("/api/v1/ai")
+//@RestController
+//@RequestMapping("/api/v1/ai")
 @RequiredArgsConstructor
 @Validated
 public class AIChatController {

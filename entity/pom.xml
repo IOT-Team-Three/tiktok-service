@@ -17,9 +17,4 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- entity/pom.xml -->
-    <dependencies>
-        <!-- 依赖已在父pom定义，这里什么都不用加 -->
-    </dependencies>
-
 </project>

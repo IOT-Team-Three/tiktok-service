@@ -15,12 +15,15 @@ public class Video {
     private Long video_id;
 
     //标题
-    private String tittle;
+    @TableField("title")
+    private String title;
 
     //文案
+    @TableField("text")
     private String text;
 
     //作者id
+    @TableField("user_id")
     private Long user_id;
 
     //视频地址

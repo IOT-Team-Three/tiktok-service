@@ -7,6 +7,7 @@ import com.iot.dto.Result;
 import com.iot.dto.UploadRequest;
 import com.iot.entity.Video;
 import com.iot.mapper.VideoMapper;
+import jakarta.annotation.PostConstruct;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,7 +26,11 @@ public class VideoResourceServiceImpl implements VideoResourceService {
     @Autowired
     private VideoMapper videoMapper;
 
-    private final String videoPath = resourceConfig.getVIDEO_PATH();
+    private  String videoPath;
+    @PostConstruct
+    public void init() {
+        this.videoPath = resourceConfig.getVIDEO_PATH();
+    }
 
     @Override
     public Result<String> uploadVideo(UploadRequest uploadRequest) {

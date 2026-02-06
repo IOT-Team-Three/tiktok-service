@@ -7,28 +7,27 @@ import java.util.Date;
 
 @Data
 @TableName("comment")
-
 public class Comment {
 
     //评论id
-    @TableId(type = IdType.ASSIGN_ID)
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     //视频号
-    private Long video_id;
+    private Long videoId;
 
     //评论者id
-    private Long user_id;
+    private Long userId;
 
     //评论回复id
     @TableField(fill = FieldFill.INSERT)
-    private Long reply_id;
+    private Long replyId;
 
     //评论内容
     private String content;
 
     //评论时间
-    private Date comment_time;
+    private Date commentTime;
 
 
 
